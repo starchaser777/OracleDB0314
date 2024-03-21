@@ -33,7 +33,7 @@ public class MemoRepositoryTests {
 
         Optional<Memo> result =  memoRepository.findById(mno);
 
-        System.out.println("==============================");
+        System.out.println("===================================");
 
         if (result.isPresent()) {
             Memo memo = result.get();
