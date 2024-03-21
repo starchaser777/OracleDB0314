@@ -1,5 +1,6 @@
 package kr.ac.kopo.oracledb0314.repository;
 
+import jakarta.transaction.Transactional;
 import kr.ac.kopo.oracledb0314.entity.Memo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,4 +41,26 @@ public class MemoRepositoryTests {
             System.out.println(memo.toString()); // .toString() 생략가능
         }
     }
+
+    @Transactional
+    @Test
+    public void testSelect2() {
+        long mno = 100L;
+
+        Memo memo = memoRepository.getOne(mno);
+
+        System.out.println("===================================");
+
+        System.out.println(memo);
+    }
+
+    @Test
+    public void testUpdate() {
+        Memo memo = Memo.builder().mno(95L).memoText("Update Dummy Data 95").build();
+
+        Memo memo1 = memoRepository.save(memo);
+
+        System.out.println(memo1);
+    }
+
 }
